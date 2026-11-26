@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+{% block title %}05 // Report Generation{% endblock %}
+
+{% block content %}
+<section class="glass-neo section-block">
+  <div class="section-header-row">
+    <div>
+      <h2 class="section-title">05 // FORENSIC INVESTIGATION REPORT</h2>
+      <p class="panel-desc">Executive incident dossier compiled from manual Breadth-First Search traversal telemetry.</p>
+    </div>
+    <div class="action-row">
+      <a href="/bfs" class="neo-btn blue-btn">↺ Run New BFS Trace</a>
+      <button id="btn-download-txt" class="neo-btn yellow-btn">⬇ Download Report (.TXT)</button>
+    </div>
+  </div>
+
+  <div class="report-summary-grid">
+    <div class="neo-inset">
+      <span class="metric-label">STARTING COMPROMISED ENTITY</span>
+      <p id="rep-start" class="mono red-text">--</p>
+    </div>
+    <div class="neo-inset">
+      <span class="metric-label">TOTAL DISCOVERED NODES</span>
+      <p id="rep-total" class="mono yellow-text">--</p>
+    </div>
+    <div class="neo-inset">
+      <span class="metric-label">BFS TRAVERSAL ORDER (FIFO)</span>
+      <p id="rep-order" class="mono blue-text small-mono">--</p>
+    </div>
+  </div>
+
+  <div class="neo-inset report-box">
+    <span class="metric-label">CONNECTION CHAINS &amp; INVESTIGATION SUMMARY</span>
+    <pre id="report-content" class="report-pre">Compiling investigation dossier...</pre>
+  </div>
+</section>
+{% endblock %}

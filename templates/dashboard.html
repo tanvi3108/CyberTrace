@@ -1,0 +1,69 @@
+{% extends "base.html" %}
+{% block title %}01 // Investigation Dashboard{% endblock %}
+
+{% block content %}
+<section class="glass-neo section-block">
+  <div class="section-header-row">
+    <div>
+      <h2 class="section-title">01 // INVESTIGATION DASHBOARD</h2>
+      <p class="panel-desc">Real-time organization attack surface posture, active BFS sessions, and anomalous login telemetry.</p>
+    </div>
+    <div class="action-row">
+      <span class="status-pill"><span class="pulse-dot"></span> TELEMETRY ONLINE</span>
+      <a href="/bfs" class="neo-btn yellow-btn">⚡ Launch BFS Investigation ➔</a>
+    </div>
+  </div>
+
+  <div class="metrics-grid">
+    <div class="neo-inset metric-card">
+      <span class="metric-label">TOTAL USERS</span>
+      <h3 id="metric-users" class="blue-text">--</h3>
+      <span class="metric-sub">Active Directory Accounts</span>
+    </div>
+    <div class="neo-inset metric-card">
+      <span class="metric-label">CONNECTED DEVICES</span>
+      <h3 id="metric-devices" class="blue-text">--</h3>
+      <span class="metric-sub">Workstations &amp; Vault Servers</span>
+    </div>
+    <div class="neo-inset metric-card red-border">
+      <span class="metric-label">SUSPICIOUS ACCOUNTS</span>
+      <h3 id="metric-suspicious" class="red-text">--</h3>
+      <span class="metric-sub">Compromised / High-Risk</span>
+    </div>
+    <div class="neo-inset metric-card">
+      <span class="metric-label">ACTIVE INVESTIGATIONS</span>
+      <h3 id="metric-investigations" class="yellow-text">--</h3>
+      <span class="metric-sub">Logged BFS Trace Runs</span>
+    </div>
+    <div class="neo-inset metric-card">
+      <span class="metric-label">RECENT SECURITY EVENTS</span>
+      <h3 id="metric-events" class="red-text">--</h3>
+      <span class="metric-sub">Flagged Lateral Anomalies</span>
+    </div>
+  </div>
+</section>
+
+<section class="glass-neo section-block">
+  <div class="section-header-row">
+    <h2 class="section-title">RECENT SECURITY EVENTS LOG</h2>
+    <span class="badge-red">ANOMALOUS AUTHENTICATION TELEMETRY</span>
+  </div>
+  <div class="table-wrapper">
+    <table>
+      <thead>
+        <tr>
+          <th>Timestamp</th>
+          <th>User Account</th>
+          <th>Target Device</th>
+          <th>Source IP Address</th>
+          <th>Detected Event Type</th>
+          <th>Quick Action</th>
+        </tr>
+      </thead>
+      <tbody id="dashboard-events-tbody">
+        <tr><td colspan="6" class="empty-cell">Loading security telemetry...</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+{% endblock %}

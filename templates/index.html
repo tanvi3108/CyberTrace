@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CyberTrace // Intelligent Cyberattack Investigation System</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/cytoscape/3.28.1/cytoscape.min.js"></script>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" />
+</head>
+<body>
+  <div class="ambient-orb orb-1"></div>
+  <div class="ambient-orb orb-2"></div>
+  <div class="ambient-orb orb-3"></div>
+
+  <div class="app-shell">
+    <!-- Top Arcane Navigation Header -->
+    <header class="glass-neo header-bar">
+      <div class="brand">
+        <div class="sigil">◈</div>
+        <div>
+          <h1>CYBERTRACE</h1>
+          <span class="subtitle">Intelligent Cyberattack Investigation System // BFS Graph Engine</span>
+        </div>
+      </div>
+      <nav class="nav-pills">
+        <a href="#sec-dashboard" class="neo-pill">1. Dashboard</a>
+        <a href="#sec-graph" class="neo-pill">2. Graph Explorer</a>
+        <a href="#sec-bfs" class="neo-pill">3. BFS Module</a>
+        <a href="#sec-results" class="neo-pill">4. Results</a>
+        <a href="#sec-report" class="neo-pill gold-pill">5. Report</a>
+      </nav>
+    </header>
+
+    <!-- =========================================================
+         SECTION 1: INVESTIGATION DASHBOARD
+         ========================================================= -->
+    <section id="sec-dashboard" class="glass-neo section-block">
+      <div class="section-header-row">
+        <h2 class="section-title">01 // INVESTIGATION DASHBOARD</h2>
+        <span class="status-pill"><span class="pulse-dot"></span> TELEMETRY SYNCED</span>
+      </div>
+
+      <div class="metrics-grid">
+        <div class="neo-inset metric-card">
+          <span class="metric-label">TOTAL USERS</span>
+          <h3 id="metric-users">--</h3>
+          <span class="metric-sub">Employee Identities</span>
+        </div>
+        <div class="neo-inset metric-card">
+          <span class="metric-label">CONNECTED DEVICES</span>
+          <h3 id="metric-devices">--</h3>
+          <span class="metric-sub">Workstations &amp; Servers</span>
+        </div>
+        <div class="neo-inset metric-card alert-glow">
+          <span class="metric-label">SUSPICIOUS ACCOUNTS</span>
+          <h3 id="metric-suspicious">--</h3>
+          <span class="metric-sub">Compromised / High-Risk</span>
+        </div>
+        <div class="neo-inset metric-card">
+          <span class="metric-label">ACTIVE INVESTIGATIONS</span>
+          <h3 id="metric-investigations">--</h3>
+          <span class="metric-sub">SQLite Audit Sessions</span>
+        </div>
+        <div class="neo-inset metric-card">
+          <span class="metric-label">RECENT SECURITY EVENTS</span>
+          <h3 id="metric-events">--</h3>
+          <span class="metric-sub">Anomalous Login Alerts</span>
+        </div>
+      </div>
+
+      <!-- Recent Security Events Strip -->
+      <div class="events-strip">
+        <span class="strip-label">RECENT SECURITY EVENTS:</span>
+        <div id="recent-events-feed" class="events-marquee"></div>
+      </div>
+    </section>
+
+    <!-- =========================================================
+         SECTIONS 2 & 3: NETWORK GRAPH EXPLORER + BFS INVESTIGATION MODULE
+         ========================================================= -->
+    <div class="main-split">
+      <!-- SECTION 3: BFS INVESTIGATION MODULE -->
+      <aside id="sec-bfs" class="glass-neo control-panel">
+        <h2 class="section-title">03 // BFS INVESTIGATION MODULE</h2>
+        <p class="panel-desc">Configure Patient Zero, traversal depth, and noise filters to execute manual FIFO Breadth-First Search.</p>
+
+        <div class="form-group">
+          <label for="select-start">Suspected Compromised Account (Starting Node)</label>
+          <select id="select-start" class="neo-input"></select>
+        </div>
+
+        <div class="form-group">
+          <label for="select-target">Target Entity for Shortest Connection Chain</label>
+          <select id="select-target" class="neo-input">
+            <option value="">-- Trace All Reachable Entities --</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="depth-slider">Investigation Depth Limit: <strong id="depth-val" class="gold-text">8 Hops</strong></label>
+          <input type="range" id="depth-slider" min="1" max="10" value="8" class="neo-range" />
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="time-start">Window Start</label>
+            <input type="text" id="time-start" class="neo-input mono" value="2026-11-26 08:00" />
+          </div>
+          <div class="form-group">
+            <label for="time-end">Window End</label>
+            <input type="text" id="time-end" class="neo-input mono" value="2026-11-26 18:00" />
+          </div>
+        </div>
+
+        <label class="toggle-row">
+          <input type="checkbox" id="chk-gateway" checked />
+          <span>Filter Shared Office Wi-Fi IP Noise</span>
+        </label>
+
+        <button id="btn-run-bfs" class="neo-btn primary-btn">⚡ Run BFS Investigation</button>
+
+        <!-- BFS vs DFS Experimental Comparison -->
+        <div class="neo-inset benchmark-box" id="benchmark-box">
+          <h4>BFS vs. DFS Viva Telemetry</h4>
+          <p class="muted">Run BFS to compare FIFO shortest-path guarantees against LIFO DFS traversal.</p>
+        </div>
+      </aside>
+
+      <!-- SECTION 2: NETWORK GRAPH EXPLORER -->
+      <section id="sec-graph" class="glass-neo graph-container">
+        <div class="graph-header">
+          <div>
+            <h2 class="section-title">02 // NETWORK GRAPH EXPLORER</h2>
+            <p id="layer-status" class="layer-banner">Click any node on the graph to select it as Starting Node, or run BFS.</p>
+          </div>
+          <div class="legend">
+            <span><i class="shape-emp"></i> User</span>
+            <span><i class="shape-dev"></i> Device</span>
+            <span><i class="shape-ip"></i> IP Address</span>
+            <span><i class="dot zero"></i> Compromised Source</span>
+            <span><i class="dot hit"></i> Discovered Wave</span>
+          </div>
+        </div>
+
+        <div id="cy"></div>
+
+        <div id="shortest-path-banner" class="neo-inset path-banner hidden"></div>
+      </section>
+    </div>
+
+    <!-- =========================================================
+         SECTION 4: INVESTIGATION RESULTS
+         ========================================================= -->
+    <section id="sec-results" class="glass-neo section-block">
+      <div class="section-header-row">
+        <h2 class="section-title">04 // INVESTIGATION RESULTS (DISCOVERED ENTITIES &amp; PATHS)</h2>
+        <span id="discovered-count" class="badge">0 Entities Discovered</span>
+      </div>
+      <div class="table-wrapper">
+        <table>
+          <thead>
+            <tr>
+              <th>BFS Level</th>
+              <th>Discovered Entity</th>
+              <th>Entity Type</th>
+              <th>Status Classification</th>
+              <th>Relationship Timestamp</th>
+              <th>Shortest Connection Path</th>
+            </tr>
+          </thead>
+          <tbody id="results-tbody">
+            <tr><td colspan="6" class="empty-cell">Execute the BFS Investigation Module to populate discovered accounts, devices, timestamps, and paths.</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- =========================================================
+         SECTION 5: REPORT GENERATION
+         ========================================================= -->
+    <section id="sec-report" class="glass-neo section-block">
+      <div class="section-header-row">
+        <h2 class="section-title">05 // FORENSIC REPORT GENERATION</h2>
+        <button id="btn-download-txt" class="neo-btn gold-btn">⬇ Download Investigation Report (.TXT)</button>
+      </div>
+
+      <div class="report-summary-grid">
+        <div class="neo-inset">
+          <span class="metric-label">STARTING COMPROMISED ENTITY</span>
+          <p id="rep-start" class="mono gold-text">Pending BFS Run...</p>
+        </div>
+        <div class="neo-inset">
+          <span class="metric-label">TOTAL DISCOVERED NODES</span>
+          <p id="rep-total" class="mono">--</p>
+        </div>
+        <div class="neo-inset">
+          <span class="metric-label">BFS TRAVERSAL ORDER (FIFO)</span>
+          <p id="rep-order" class="mono small-mono">--</p>
+        </div>
+      </div>
+
+      <div class="neo-inset report-box">
+        <span class="metric-label">CONNECTION CHAINS &amp; ANALYST INVESTIGATION SUMMARY</span>
+        <pre id="report-content" class="report-pre">Run a BFS investigation above to automatically compile the starting entity, traversal order, connection chains, and executive summary.</pre>
+      </div>
+    </section>
+  </div>
+
+  <script src="{{ url_for('static', filename='app.js') }}"></script>
+</body>
+</html>

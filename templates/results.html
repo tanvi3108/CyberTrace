@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% block title %}04 // Investigation Results{% endblock %}
+
+{% block content %}
+<section class="glass-neo section-block">
+  <div class="section-header-row">
+    <div>
+      <h2 class="section-title">04 // INVESTIGATION RESULTS</h2>
+      <p id="results-subtitle" class="panel-desc">Discovered accounts, devices, relationship timestamps, and shortest connection paths.</p>
+    </div>
+    <div class="action-row">
+      <span id="discovered-count" class="badge-yellow">0 Entities Discovered</span>
+      <a href="/report" class="neo-btn yellow-btn">05. Generate Forensic Report ➔</a>
+    </div>
+  </div>
+
+  <div class="table-wrapper full-table">
+    <table>
+      <thead>
+        <tr>
+          <th>BFS Hop Level</th>
+          <th>Discovered Entity</th>
+          <th>Entity Type</th>
+          <th>Compromise Classification</th>
+          <th>Relationship Timestamp</th>
+          <th>Shortest Connection Path</th>
+        </tr>
+      </thead>
+      <tbody id="results-tbody">
+        <tr><td colspan="6" class="empty-cell">Loading investigation results...</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+{% endblock %}

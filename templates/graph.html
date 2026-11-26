@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+{% block title %}02 // Network Graph Explorer{% endblock %}
+
+{% block content %}
+<section class="glass-neo section-block">
+  <div class="section-header-row">
+    <div>
+      <h2 class="section-title">02 // NETWORK GRAPH EXPLORER</h2>
+      <p id="graph-status-text" class="layer-banner">Click any employee node to select it as your Starting Node, then launch BFS.</p>
+    </div>
+
+    <div class="action-row">
+      <label class="toggle-row">
+        <input type="checkbox" id="chk-gateway" checked />
+        <span>Suppress Shared Office Wi-Fi Noise</span>
+      </label>
+      <a href="/bfs" id="btn-proceed-bfs" class="neo-btn yellow-btn">⚡ Trace Selected Node in BFS ➔</a>
+    </div>
+  </div>
+
+  <div class="legend-bar neo-inset">
+    <div class="legend">
+      <span><i class="shape-emp"></i> User Account (Circle)</span>
+      <span><i class="shape-dev"></i> Device / Server (Rounded Box)</span>
+      <span><i class="shape-ip"></i> IP Address (Diamond)</span>
+      <span><i class="dot zero"></i> Compromised Source</span>
+      <span><i class="dot hit"></i> BFS Discovered</span>
+    </div>
+    <span id="selected-node-pill" class="badge-blue">Starting Node: U001</span>
+  </div>
+
+  <div id="cy" class="cy-large"></div>
+</section>
+{% endblock %}

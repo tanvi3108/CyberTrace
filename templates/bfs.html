@@ -1,0 +1,76 @@
+{% extends "base.html" %}
+{% block title %}03 // BFS Investigation Module{% endblock %}
+
+{% block content %}
+<div class="bfs-split">
+  <!-- Left Control Panel -->
+  <aside class="glass-neo control-panel">
+    <h2 class="section-title">03 // BFS INVESTIGATION MODULE</h2>
+    <p class="panel-desc">Select a suspected compromised account and hop depth to animate level-by-level FIFO traversal.</p>
+
+    <div class="form-group">
+      <label for="select-start">Suspected Compromised Account (Starting Node)</label>
+      <select id="select-start" class="neo-input"></select>
+    </div>
+
+    <div class="form-group">
+      <label for="select-target">Target Entity for Shortest Connection Chain (Optional)</label>
+      <select id="select-target" class="neo-input">
+        <option value="">-- Trace All Reachable Nodes --</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label for="depth-slider">Investigation Depth Limit: <strong id="depth-val" class="yellow-text">8 Hops</strong></label>
+      <input type="range" id="depth-slider" min="1" max="10" value="8" class="neo-range" />
+    </div>
+
+    <div class="form-row">
+      <div class="form-group">
+        <label for="time-start">Window Start</label>
+        <input type="text" id="time-start" class="neo-input mono" value="2026-11-26 08:00" />
+      </div>
+      <div class="form-group">
+        <label for="time-end">Window End</label>
+        <input type="text" id="time-end" class="neo-input mono" value="2026-11-26 18:00" />
+      </div>
+    </div>
+
+    <label class="toggle-row">
+      <input type="checkbox" id="chk-gateway" checked />
+      <span>Filter Shared Office Wi-Fi IP Noise</span>
+    </label>
+
+    <button id="btn-run-bfs" class="neo-btn primary-btn">⚡ Run Level-by-Level BFS</button>
+
+    <div class="neo-inset benchmark-box" id="benchmark-box">
+      <h4>BFS vs. DFS Viva Telemetry</h4>
+      <p class="muted">Execute BFS to compare FIFO shortest-path guarantees against LIFO DFS traversal.</p>
+    </div>
+
+    <div class="nav-next-row">
+      <a href="/results" class="neo-btn blue-btn">04. View Results Table ➔</a>
+      <a href="/report" class="neo-btn yellow-btn">05. View Report ➔</a>
+    </div>
+  </aside>
+
+  <!-- Right Live Wavefront Animation Canvas -->
+  <section class="glass-neo graph-container">
+    <div class="graph-header">
+      <div>
+        <h3 class="section-title">LIVE BFS WAVEFRONT ANIMATION</h3>
+        <p id="layer-status" class="layer-banner">Ready — Click "Run Level-by-Level BFS" to animate discovery.</p>
+      </div>
+      <div class="legend">
+        <span><i class="dot zero"></i> Patient Zero (L0)</span>
+        <span><i class="dot hit"></i> Discovered Wave</span>
+        <span><i class="dot chain"></i> Shortest Chain</span>
+      </div>
+    </div>
+
+    <div id="cy" class="cy-medium"></div>
+
+    <div id="shortest-path-banner" class="neo-inset path-banner hidden"></div>
+  </section>
+</div>
+{% endblock %}

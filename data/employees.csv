@@ -1,0 +1,101 @@
+user_id,name,department,status
+U001,Rahul Sharma,IT Security,Compromised
+U002,Priya Verma,Executive,Normal
+U003,Aman Gupta,IT Security,Normal
+U004,Neha Nair,IT Security,Normal
+U005,Vikram Mehta,Executive,Normal
+U006,Ananya Kapoor,HR,Normal
+U007,Rohan Rao,Finance,High-Value
+U008,Kavya Malhotra,Finance,Normal
+U009,Siddharth Joshi,Finance,Normal
+U010,Meera Singh,Executive,Normal
+U011,Arjun Sharma,IT Security,Normal
+U012,Diya Verma,Executive,High-Value
+U013,Karan Gupta,Executive,Normal
+U014,Sneha Nair,Executive,Normal
+U015,Aditya Mehta,Operations,Normal
+U016,Pooja Kapoor,IT Security,Normal
+U017,Varun Rao,Operations,Normal
+U018,Ishita Malhotra,Engineering,Normal
+U019,Nikhil Joshi,IT Security,High-Value
+U020,Riya Singh,IT Security,Normal
+U021,Manish Sharma,IT Security,Normal
+U022,Tara Verma,Finance,Normal
+U023,Deepak Gupta,Finance,Normal
+U024,Nandini Nair,Operations,Normal
+U025,Abhishek Mehta,Operations,Normal
+U026,Swati Kapoor,IT Security,Normal
+U027,Harsh Rao,Operations,Normal
+U028,Shruti Malhotra,Finance,Normal
+U029,Gaurav Joshi,Executive,Normal
+U030,Kriti Singh,Executive,Normal
+U031,Yash Sharma,Executive,Normal
+U032,Aarti Verma,Operations,Normal
+U033,Pranav Gupta,Engineering,Normal
+U034,Divya Nair,Finance,Normal
+U035,Suresh Mehta,Engineering,Normal
+U036,Anjali Kapoor,Operations,Normal
+U037,Rajesh Rao,HR,Normal
+U038,Pallavi Malhotra,IT Security,Normal
+U039,Vivek Joshi,Finance,Normal
+U040,Simran Singh,Executive,Normal
+U041,Tarun Sharma,Engineering,Normal
+U042,Sakshi Verma,HR,Normal
+U043,Mohit Gupta,HR,Normal
+U044,Nidhi Nair,Finance,Normal
+U045,Akash Mehta,Finance,High-Value
+U046,Tanya Kapoor,HR,Normal
+U047,Pankaj Rao,IT Security,Normal
+U048,Bhavna Malhotra,IT Security,Normal
+U049,Sandeep Joshi,Engineering,Normal
+U050,Garima Singh,IT Security,Normal
+U051,Rahul Sharma,HR,Normal
+U052,Priya Verma,HR,Normal
+U053,Aman Gupta,Operations,Normal
+U054,Neha Nair,HR,Normal
+U055,Vikram Mehta,IT Security,Normal
+U056,Ananya Kapoor,Executive,Normal
+U057,Rohan Rao,Engineering,Normal
+U058,Kavya Malhotra,Operations,Normal
+U059,Siddharth Joshi,IT Security,Normal
+U060,Meera Singh,Engineering,Normal
+U061,Arjun Sharma,IT Security,Normal
+U062,Diya Verma,Operations,Normal
+U063,Karan Gupta,HR,Normal
+U064,Sneha Nair,Executive,Normal
+U065,Aditya Mehta,Operations,Normal
+U066,Pooja Kapoor,HR,Normal
+U067,Varun Rao,Operations,Normal
+U068,Ishita Malhotra,Finance,Normal
+U069,Nikhil Joshi,Executive,Normal
+U070,Riya Singh,IT Security,Normal
+U071,Manish Sharma,IT Security,Normal
+U072,Tara Verma,Executive,Normal
+U073,Deepak Gupta,Finance,Normal
+U074,Nandini Nair,HR,Normal
+U075,Abhishek Mehta,IT Security,Normal
+U076,Swati Kapoor,Finance,Normal
+U077,Harsh Rao,IT Security,Normal
+U078,Shruti Malhotra,Engineering,Normal
+U079,Gaurav Joshi,HR,Normal
+U080,Kriti Singh,Engineering,Normal
+U081,Yash Sharma,Executive,Normal
+U082,Aarti Verma,HR,Normal
+U083,Pranav Gupta,Finance,Normal
+U084,Divya Nair,HR,Normal
+U085,Suresh Mehta,HR,Normal
+U086,Anjali Kapoor,Finance,Normal
+U087,Rajesh Rao,Executive,Normal
+U088,Pallavi Malhotra,HR,Normal
+U089,Vivek Joshi,Executive,Normal
+U090,Simran Singh,Executive,Normal
+U091,Tarun Sharma,Executive,Normal
+U092,Sakshi Verma,IT Security,Normal
+U093,Mohit Gupta,Operations,Normal
+U094,Nidhi Nair,Executive,Normal
+U095,Akash Mehta,Finance,Normal
+U096,Tanya Kapoor,Operations,Normal
+U097,Pankaj Rao,Executive,Normal
+U098,Bhavna Malhotra,Finance,Normal
+U099,Sandeep Joshi,Finance,Normal
+U100,Garima Singh,Engineering,Normal

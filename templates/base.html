@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CyberTrace // {% block title %}Console{% endblock %}</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/cytoscape/3.28.1/cytoscape.min.js"></script>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" />
+</head>
+<body data-page="{{ active_page }}">
+  <!-- Ambient Glows (Crimson Red, Electric Yellow, Baby Blue — Zero Purple) -->
+  <div class="ambient-orb orb-red"></div>
+  <div class="ambient-orb orb-blue"></div>
+  <div class="ambient-orb orb-yellow"></div>
+
+  <div class="app-shell">
+    <!-- Persistent Top Navigation Bar -->
+    <header class="glass-neo header-bar">
+      <a href="/" class="brand">
+        <div class="sigil">◈</div>
+        <div>
+          <h1>CYBERTRACE</h1>
+          <span class="subtitle">BFS Cyberattack Lateral-Movement Investigation Platform</span>
+        </div>
+      </a>
+
+      <nav class="nav-pills">
+        <a href="/" class="neo-pill {% if active_page == 'dashboard' %}active-pill{% endif %}">
+          01. Dashboard
+        </a>
+        <a href="/graph" class="neo-pill {% if active_page == 'graph' %}active-pill{% endif %}">
+          02. Graph Explorer
+        </a>
+        <a href="/bfs" class="neo-pill {% if active_page == 'bfs' %}active-pill{% endif %}">
+          03. BFS Module
+        </a>
+        <a href="/results" class="neo-pill {% if active_page == 'results' %}active-pill{% endif %}">
+          04. Results
+        </a>
+        <a href="/report" class="neo-pill {% if active_page == 'report' %}active-pill{% endif %}">
+          05. Report
+        </a>
+      </nav>
+    </header>
+
+    <!-- Page-Specific Content -->
+    <main class="page-content">
+      {% block content %}{% endblock %}
+    </main>
+  </div>
+
+  <script src="{{ url_for('static', filename='app.js') }}"></script>
+</body>
+</html>
