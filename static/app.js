@@ -60,16 +60,17 @@ async function initDashboardPage() {
       <td class="mono yellow-text">${ev.device_id}</td>
       <td class="mono blue-text">${ev.ip_address}</td>
       <td><span class="badge-red">${ev.login_type}</span></td>
-      <td><button class="neo-btn yellow-btn mini-btn" onclick="jumpToBfs('${ev.user_id}')">Trace ${ev.user_id} ➔</button></td>
+      <td>
+        <a href="/bfs?start=${encodeURIComponent(ev.user_id)}&autorun=1"
+           class="neo-btn yellow-btn mini-btn"
+           onclick="sessionStorage.setItem('cybertrace_start_node', '${ev.user_id}')">
+          Trace ${ev.user_id} ➔
+        </a>
+      </td>
     `;
     tbody.appendChild(tr);
   });
 }
-
-window.jumpToBfs = function(userId) {
-  setSelectedStartNode(userId);
-  window.location.href = "/bfs";
-};
 
 // =========================================================
 // PAGE 2: NETWORK GRAPH EXPLORER
@@ -98,6 +99,14 @@ async function initGraphPage() {
 // PAGE 3: BFS INVESTIGATION MODULE
 // =========================================================
 async function initBfsPage() {
+  const params = new URLSearchParams(window.location.search);
+  const urlStart = params.get("start");
+  const autoRun = params.get("autorun") === "1";
+
+  if (urlStart) {
+    setSelectedStartNode(urlStart);
+  }
+
   const depthSlider = document.getElementById("depth-slider");
   const depthVal = document.getElementById("depth-val");
   depthSlider.addEventListener("input", () => {
@@ -127,6 +136,10 @@ async function initBfsPage() {
   renderCytoscapeGraph(overview.graph, false);
 
   document.getElementById("btn-run-bfs").addEventListener("click", executeBfsRun);
+
+  if (autoRun) {
+    await executeBfsRun();
+  }
 }
 
 async function executeBfsRun() {
